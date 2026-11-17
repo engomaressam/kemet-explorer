@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="760" viewBox="0 0 360 760">
+  <title>Detail</title>
+  <rect x="0" y="0" width="360" height="760" fill="#FFFFFF"/>
+  <text x="18" y="22" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start">9:41</text>
+  <rect x="314" y="12" width="26" height="12" rx="3" fill="none" stroke="#1F2937" stroke-width="1.2"/>
+  <line x1="0" y1="84" x2="360" y2="84" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="18" y="62" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#1F2937" text-anchor="start">&lt;</text>
+  <text x="42" y="63" font-family="Inter, Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#1F2937" text-anchor="start">Abu Simbel Temples</text>
+  <circle cx="326" cy="57" r="15" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="326" y="61" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#6B7280" text-anchor="middle">S</text>
+  <rect x="16" y="96" width="328" height="150" rx="12" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="16" y1="96" x2="344" y2="246" stroke="#9CA3AF" stroke-width="1"/>
+  <line x1="344" y1="96" x2="16" y2="246" stroke="#9CA3AF" stroke-width="1"/>
+  <rect x="128.0" y="160.0" width="104" height="22" rx="11" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="180.0" y="175.0" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10" font-weight="400" fill="#6B7280" text-anchor="middle">photo (Wikipedia API)</text>
+  <text x="16" y="274" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#1F2937" text-anchor="start">Abu Simbel Temples</text>
+  <text x="16" y="293" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#6B7280" text-anchor="start">Abu Simbel, Aswan - Aswan &amp; Nubia</text>
+  <rect x="16" y="302" width="78.4" height="28" rx="14" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="55.2" y="320" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="600" fill="#1F2937" text-anchor="middle">Temples</text>
+  <rect x="102.4" y="302" width="107.2" height="28" rx="14" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <text x="156.0" y="320" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="600" fill="#1F2937" text-anchor="middle">New Kingdom</text>
+  <rect x="16" y="342" width="104" height="52" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="68" cy="360" r="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="68" y="384" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#1F2937" text-anchor="middle">Favourite</text>
+  <rect x="128" y="342" width="104" height="52" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="180" cy="360" r="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="180" y="384" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#1F2937" text-anchor="middle">Visited</text>
+  <rect x="240" y="342" width="104" height="52" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="292" cy="360" r="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="292" y="384" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#1F2937" text-anchor="middle">Share</text>
+  <rect x="16" y="406" width="328" height="62" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="40" cy="430" r="11" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="60" y="426" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#6B7280" text-anchor="start">Right now at Abu Simbel</text>
+  <text x="60" y="443" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="start">31 C, Clear sky (Open-Meteo)</text>
+  <rect x="28" y="454" width="250" height="6" rx="3.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <text x="16" y="494" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">About</text>
+  <rect x="16" y="504" width="320" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <rect x="16" y="518" width="300" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <rect x="16" y="532" width="250" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <text x="16" y="562" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">Highlights</text>
+  <circle cx="22" cy="578" r="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <rect x="32" y="574" width="270" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <circle cx="22" cy="594" r="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <rect x="32" y="590" width="240" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <text x="16" y="626" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">From Wikipedia</text>
+  <rect x="16" y="636" width="310" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <text x="16" y="668" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">More in Aswan &amp; Nubia</text>
+  <rect x="16" y="678" width="130" height="34" rx="8" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="154" y="678" width="130" height="34" rx="8" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="16" y="718" width="328" height="44" rx="10" fill="#FFFFFF" stroke="#374151" stroke-width="1.5"/>
+  <text x="180.0" y="745" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#374151" text-anchor="middle">Back to all sites</text>
+</svg>

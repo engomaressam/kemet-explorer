@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="760" viewBox="0 0 360 760">
+  <title>Register</title>
+  <rect x="0" y="0" width="360" height="760" fill="#FFFFFF"/>
+  <text x="18" y="22" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start">9:41</text>
+  <rect x="314" y="12" width="26" height="12" rx="3" fill="none" stroke="#1F2937" stroke-width="1.2"/>
+  <rect x="152" y="70" width="56" height="56" rx="13" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <text x="180" y="103" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">LOGO</text>
+  <text x="180" y="164" font-family="Inter, Arial, Helvetica, sans-serif" font-size="21" font-weight="800" fill="#1F2937" text-anchor="middle">Create your account</text>
+  <rect x="60" y="180" width="240" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <rect x="16" y="204" width="328" height="400" rx="14" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="24" y="218" width="312" height="52" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="36" y="238" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#B91C1C" text-anchor="start">Validation errors listed here</text>
+  <text x="36" y="256" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#B91C1C" text-anchor="start">(empty fields, invalid email, short password)</text>
+  <text x="24" y="292" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" fill="#1F2937" text-anchor="start">Username</text>
+  <rect x="24" y="300" width="312" height="42" rx="8" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="44" cy="321" r="7" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="60" y="326" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#9CA3AF" text-anchor="start">e.g. omar_essam</text>
+  <text x="24" y="364" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" fill="#1F2937" text-anchor="start">Email</text>
+  <rect x="24" y="372" width="312" height="42" rx="8" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="44" cy="393" r="7" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="60" y="398" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#9CA3AF" text-anchor="start">name@example.com</text>
+  <text x="24" y="436" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" fill="#1F2937" text-anchor="start">Password</text>
+  <rect x="24" y="444" width="312" height="42" rx="8" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="44" cy="465" r="7" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="60" y="470" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#9CA3AF" text-anchor="start">At least 8 characters, a number</text>
+  <text x="320" y="470" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">show</text>
+  <rect x="24" y="510" width="312" height="44" rx="10" fill="#374151" stroke="#374151" stroke-width="1.5"/>
+  <text x="180.0" y="537" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Sign Up</text>
+  <text x="180" y="640" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#6B7280" text-anchor="middle">Already have an account? Log in</text>
+  <line x1="234" y1="643" x2="287" y2="643" stroke="#374151" stroke-width="1.2"/>
+  <rect x="24" y="670" width="312" height="59" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="32" y="688" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#92400E" text-anchor="start">Sign Up: save the account to local storage,</text>
+  <text x="32" y="703" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#92400E" text-anchor="start">start a session and open Home.</text>
+  <text x="32" y="718" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#92400E" text-anchor="start">Log in link: back to the Login frame.</text>
+</svg>

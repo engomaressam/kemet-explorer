@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="760" viewBox="0 0 360 760">
+  <title>Favourites (saved data)</title>
+  <rect x="0" y="0" width="360" height="760" fill="#FFFFFF"/>
+  <text x="18" y="22" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#1F2937" text-anchor="start">9:41</text>
+  <rect x="314" y="12" width="26" height="12" rx="3" fill="none" stroke="#1F2937" stroke-width="1.2"/>
+  <line x1="0" y1="84" x2="360" y2="84" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="18" y="42" width="30" height="30" rx="7" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <text x="33" y="62" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">K</text>
+  <text x="58" y="63" font-family="Inter, Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#1F2937" text-anchor="start">Kemet Explorer</text>
+  <circle cx="326" cy="57" r="15" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="326" y="61" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#6B7280" text-anchor="middle">S</text>
+  <text x="18" y="116" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#1F2937" text-anchor="start">My favourites</text>
+  <rect x="18" y="128" width="260" height="8" rx="4.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <rect x="16" y="148" width="328" height="74" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <circle cx="36" cy="170" r="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="52" y="174" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="start">Explorer progress</text>
+  <text x="330" y="174" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="end">2 / 12</text>
+  <rect x="30" y="186" width="300" height="8" rx="4" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <rect x="30" y="186" width="50" height="8" rx="4" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <rect x="30" y="204" width="200" height="6" rx="3.0" fill="#E5E7EB" stroke="none" stroke-width="1.5"/>
+  <text x="18" y="248" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">Favourite sites (4)</text>
+  <rect x="16" y="258" width="328" height="86" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="26" y="268" width="66" height="66" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="26" y1="268" x2="92" y2="334" stroke="#9CA3AF" stroke-width="1"/>
+  <line x1="92" y1="268" x2="26" y2="334" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="104" y="286" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">Pyramids of Giza</text>
+  <text x="104" y="304" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#6B7280" text-anchor="start">Giza</text>
+  <rect x="104" y="312" width="60.0" height="18" rx="5" fill="#F3F4F6" stroke="none" stroke-width="1.5"/>
+  <text x="108" y="325" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#6B7280" text-anchor="start">Pyramids</text>
+  <circle cx="318" cy="282" r="9" fill="#374151" stroke="#374151" stroke-width="1.5"/>
+  <circle cx="318" cy="316" r="14" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <text x="318" y="321" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">></text>
+  <rect x="16" y="352" width="328" height="86" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="26" y="362" width="66" height="66" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="26" y1="362" x2="92" y2="428" stroke="#9CA3AF" stroke-width="1"/>
+  <line x1="92" y1="362" x2="26" y2="428" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="104" y="380" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">Karnak Temple</text>
+  <text x="104" y="398" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#6B7280" text-anchor="start">Luxor</text>
+  <rect x="104" y="406" width="53.5" height="18" rx="5" fill="#F3F4F6" stroke="none" stroke-width="1.5"/>
+  <text x="108" y="419" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#6B7280" text-anchor="start">Temples</text>
+  <circle cx="318" cy="376" r="9" fill="#374151" stroke="#374151" stroke-width="1.5"/>
+  <circle cx="318" cy="410" r="14" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <text x="318" y="415" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">></text>
+  <rect x="16" y="446" width="328" height="86" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="26" y="456" width="66" height="66" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="26" y1="456" x2="92" y2="522" stroke="#9CA3AF" stroke-width="1"/>
+  <line x1="92" y1="456" x2="26" y2="522" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="104" y="474" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">Valley of the Kings</text>
+  <text x="104" y="492" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#6B7280" text-anchor="start">Luxor West Bank</text>
+  <rect x="104" y="500" width="40.5" height="18" rx="5" fill="#F3F4F6" stroke="none" stroke-width="1.5"/>
+  <text x="108" y="513" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#6B7280" text-anchor="start">Tombs</text>
+  <circle cx="318" cy="470" r="9" fill="#374151" stroke="#374151" stroke-width="1.5"/>
+  <circle cx="318" cy="504" r="14" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <text x="318" y="509" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">></text>
+  <rect x="16" y="540" width="328" height="86" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>
+  <rect x="26" y="550" width="66" height="66" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="26" y1="550" x2="92" y2="616" stroke="#9CA3AF" stroke-width="1"/>
+  <line x1="92" y1="550" x2="26" y2="616" stroke="#9CA3AF" stroke-width="1"/>
+  <text x="104" y="568" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="start">Abu Simbel Temples</text>
+  <text x="104" y="586" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#6B7280" text-anchor="start">Abu Simbel</text>
+  <rect x="104" y="594" width="53.5" height="18" rx="5" fill="#F3F4F6" stroke="none" stroke-width="1.5"/>
+  <text x="108" y="607" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#6B7280" text-anchor="start">Temples</text>
+  <circle cx="318" cy="564" r="9" fill="#374151" stroke="#374151" stroke-width="1.5"/>
+  <circle cx="318" cy="598" r="14" fill="#374151" stroke="none" stroke-width="1.5"/>
+  <text x="318" y="603" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">></text>
+  <rect x="24" y="636" width="312" height="44" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="32" y="654" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#92400E" text-anchor="start">Read from local storage on open:</text>
+  <text x="32" y="669" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#92400E" text-anchor="start">kemet:favorites:&lt;userId>, kemet:visited:&lt;userId>.</text>
+  <line x1="0" y1="698" x2="360" y2="698" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="60.0" cy="720" r="10" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="60.0" y="745" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">Home</text>
+  <circle cx="180.0" cy="720" r="10" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="180.0" y="745" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#6B7280" text-anchor="middle">Live</text>
+  <circle cx="300.0" cy="720" r="10" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+  <text x="300.0" y="745" font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#1F2937" text-anchor="middle">Favourites</text>
+</svg>
