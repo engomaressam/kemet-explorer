@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "Kemet Explorer",
+    "slug": "kemet-explorer",
+    "version": "1.0.0",
+    "scheme": "kemetexplorer",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1D4E89"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.omaressam.kemetexplorer"
+    },
+    "android": {
+      "package": "com.omaressam.kemetexplorer",
+      "adaptiveIcon": {
+        "backgroundColor": "#1D4E89",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png",
+      "name": "Kemet Explorer",
+      "shortName": "Kemet",
+      "themeColor": "#1D4E89",
+      "backgroundColor": "#FBF6EC"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#1D4E89"
+        }
+      ]
+    ]
+  }
+}
