@@ -1,6 +1,7 @@
 // Login screen: email and password, with validation and error feedback.
 // Credentials are checked against the accounts saved in local storage
-// (see AuthContext.logIn). A successful login opens the home screen.
+// (see AuthContext.logIn). A successful login opens the home screen. Visitors
+// can also open the demo account without signing up.
 
 import React, { useState } from 'react';
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
@@ -14,7 +15,7 @@ const logo = require('../../../assets/logo.png');
 
 export default function LoginScreen() {
   const router = useRouter();
-  const { logIn } = useAuth();
+  const { logIn, startDemo } = useAuth();
   const { colors } = useTheme();
 
   // Form state
@@ -39,6 +40,13 @@ export default function LoginScreen() {
   };
 
   const goToSignup = () => router.push('/signup');
+
+  const tryDemo = async () => {
+    setBusy(true);
+    await startDemo();
+    setBusy(false);
+    router.replace('/home');
+  };
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
@@ -92,6 +100,19 @@ export default function LoginScreen() {
           </View>
           <OutlineButton title="Sign Up" icon="person-add-outline" onPress={goToSignup} testID="login-signup-button" />
         </Card>
+
+        {/* Demo account for visitors who only want to look around */}
+        <OutlineButton
+          title="Try the demo, no sign-up"
+          icon="sparkles-outline"
+          color={colors.accent}
+          onPress={tryDemo}
+          style={{ marginTop: 16 }}
+          testID="login-demo-button"
+        />
+        <AppText size={12.5} muted style={{ textAlign: 'center', marginTop: 6 }}>
+          Opens a demo account with a few saved sites. Everything stays in this browser or device.
+        </AppText>
 
         <View style={styles.footer}>
           <AppText muted>Don't have an account? </AppText>

@@ -1,22 +1,37 @@
-// Authentication for Kemet Explorer: sign-up, login, logout and profile updates.
+// Authentication for Kemet Explorer: sign-up, login, logout, profile updates and
+// a demo account.
 //
 // There is no backend: accounts live in local storage on the device (see
 // src/lib/storage.js). Passwords are never stored in clear text; each one is
-// hashed with SHA-256 and a random salt using expo-crypto.
+// hashed with SHA-256 and a random salt using expo-crypto. This protects the
+// stored data from casual reading; it is not a substitute for server-side
+// authentication, which a production version would need.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import * as Crypto from 'expo-crypto';
 import {
+  KEYS,
   clearSession,
   getSession,
   getUsers,
   logActivity,
   saveSession,
   saveUsers,
+  setJSON,
 } from '../lib/storage';
 import { validateEmail, validatePassword, validateSignup, validateUsername } from '../lib/validation';
 
 const AuthContext = createContext(null);
+
+// The demo account lets visitors try the app without signing up. Its password
+// hash is made from a random value nobody knows, so it can only be opened with the
+// "Try the demo" button, and it starts with a few saved sites and a planned trip.
+export const DEMO_ACCOUNT = { username: 'demo_explorer', email: 'demo@kemet-explorer.app' };
+const DEMO_SEED = {
+  favorites: ['giza-pyramids', 'karnak', 'abu-simbel', 'valley-queens'],
+  visited: ['giza-pyramids', 'great-sphinx', 'egyptian-museum'],
+  trip: ['great-sphinx', 'grand-egyptian-museum', 'karnak', 'valley-kings', 'hatshepsut', 'edfu', 'philae', 'abu-simbel'],
+};
 
 async function hashPassword(password, salt) {
   return Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, `${salt}:${password}`);
@@ -52,6 +67,9 @@ export function AuthProvider({ children }) {
 
     const users = await getUsers();
     const normalisedEmail = email.trim().toLowerCase();
+    if (normalisedEmail === DEMO_ACCOUNT.email) {
+      return { ok: false, error: 'Sign up failed: this email is reserved for the demo account.', fieldErrors: { email: true } };
+    }
     if (users.some((u) => u.email === normalisedEmail)) {
       return {
         ok: false,
@@ -109,6 +127,32 @@ export function AuthProvider({ children }) {
     return { ok: true };
   }, []);
 
+  // Demo: open (or create, the first time on this device) the demo account.
+  const startDemo = useCallback(async () => {
+    const users = await getUsers();
+    let account = users.find((u) => u.demo);
+    if (!account) {
+      const salt = Crypto.randomUUID();
+      account = {
+        id: Crypto.randomUUID(),
+        username: DEMO_ACCOUNT.username,
+        email: DEMO_ACCOUNT.email,
+        demo: true,
+        salt,
+        passwordHash: await hashPassword(Crypto.randomUUID(), salt),
+        createdAt: new Date().toISOString(),
+      };
+      await saveUsers([...users, account]);
+      await setJSON(KEYS.favorites(account.id), DEMO_SEED.favorites);
+      await setJSON(KEYS.visited(account.id), DEMO_SEED.visited);
+      await setJSON(KEYS.trip(account.id), DEMO_SEED.trip);
+    }
+    await saveSession(account);
+    await logActivity(account.id, 'demo-started', '');
+    setUser(publicUser(account));
+    return { ok: true };
+  }, []);
+
   // Logout clears the session so the next launch opens the login screen.
   const logOut = useCallback(async () => {
     if (user) await logActivity(user.id, 'logged-out', user.email);
@@ -157,8 +201,8 @@ export function AuthProvider({ children }) {
   );
 
   const value = useMemo(
-    () => ({ user, ready, signUp, logIn, logOut, updateProfile, changePassword }),
-    [user, ready, signUp, logIn, logOut, updateProfile, changePassword],
+    () => ({ user, ready, signUp, logIn, startDemo, logOut, updateProfile, changePassword }),
+    [user, ready, signUp, logIn, startDemo, logOut, updateProfile, changePassword],
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

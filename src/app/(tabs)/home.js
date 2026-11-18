@@ -1,6 +1,7 @@
 // Home screen: the hub of the app. It greets the user, shows their progress,
 // highlights a "site of the day" and lists every site with search and category
-// filters. Each card leads to the detail screen; the round button picks a random site.
+// filters, either as a list or as a timeline grouped by historical period. Each
+// card leads to the detail screen; the round button picks a random site.
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
@@ -10,7 +11,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useSettings } from '../../context/SettingsContext';
 import { AppText, Chip, SectionTitle } from '../../components/ui';
 import SiteCard from '../../components/SiteCard';
-import { CATEGORIES, SITES, siteOfTheDay } from '../../data/sites';
+import { CATEGORIES, SITES, groupByPeriod, siteOfTheDay } from '../../data/sites';
 import { getFavorites, getVisited, toggleFavorite } from '../../lib/storage';
 import { fetchSitePhotos } from '../../lib/api';
 import { RADIUS } from '../../constants/theme';
@@ -23,8 +24,9 @@ const SORTERS = {
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const { settings, colors } = useSettings();
+  const [view, setView] = useState('list'); // 'list' or 'timeline'
 
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState(settings.defaultCategory);
@@ -58,6 +60,24 @@ export default function HomeScreen() {
 
   const featured = siteOfTheDay();
 
+  const renderCard = (site) => (
+    <SiteCard
+      key={site.id}
+      site={site}
+      photo={photos[site.id]}
+      showPhoto={settings.showPhotos}
+      isFavorite={favorites.includes(site.id)}
+      visited={visited.includes(site.id)}
+      onToggleFavorite={() => onToggleFavorite(site.id)}
+    />
+  );
+
+  // The demo account is for trying the app; this swaps it for a real account.
+  const createOwnAccount = async () => {
+    await logOut();
+    router.replace('/signup');
+  };
+
   const onToggleFavorite = async (siteId) => setFavorites(await toggleFavorite(user.id, siteId));
 
   const surpriseMe = () => {
@@ -75,6 +95,18 @@ export default function HomeScreen() {
         <AppText muted style={{ marginTop: 4 }}>
           Discover the wonders of ancient Egypt, from Giza to Abu Simbel.
         </AppText>
+
+        {user && user.demo ? (
+          <View style={[styles.demo, { backgroundColor: colors.accentSoft, borderColor: colors.accent }]} testID="demo-banner">
+            <Ionicons name="sparkles-outline" size={18} color={colors.text} />
+            <AppText size={13} style={{ flex: 1, marginLeft: 8, lineHeight: 19 }}>
+              You are using the demo account, with a few sites already saved. Everything stays in this browser.{' '}
+              <AppText size={13} weight="700" color={colors.primary} onPress={createOwnAccount}>
+                Create my own account
+              </AppText>
+            </AppText>
+          </View>
+        ) : null}
 
         {/* Progress overview */}
         <View style={styles.statsRow}>
@@ -146,23 +178,33 @@ export default function HomeScreen() {
           </>
         ) : null}
 
-        {/* All sites */}
-        <SectionTitle>{`All sites (${visibleSites.length})`}</SectionTitle>
+        {/* All sites, as a list or as a timeline by period */}
+        <SectionTitle
+          action={view === 'list' ? 'Timeline view' : 'List view'}
+          onAction={() => setView(view === 'list' ? 'timeline' : 'list')}
+        >
+          {`All sites (${visibleSites.length})`}
+        </SectionTitle>
         {visibleSites.length === 0 ? (
           <AppText muted style={{ textAlign: 'center', marginTop: 20 }}>
             No sites match your search. Try another name or category.
           </AppText>
+        ) : view === 'list' ? (
+          visibleSites.map(renderCard)
         ) : (
-          visibleSites.map((site) => (
-            <SiteCard
-              key={site.id}
-              site={site}
-              photo={photos[site.id]}
-              showPhoto={settings.showPhotos}
-              isFavorite={favorites.includes(site.id)}
-              visited={visited.includes(site.id)}
-              onToggleFavorite={() => onToggleFavorite(site.id)}
-            />
+          groupByPeriod(visibleSites).map(({ period, sites }) => (
+            <View key={period.id} testID={`timeline-${period.id}`}>
+              <View style={styles.periodHeader}>
+                <View style={[styles.periodDot, { backgroundColor: colors.accent }]} />
+                <AppText size={15} weight="800">
+                  {period.name}
+                </AppText>
+                <AppText size={12.5} muted style={{ marginLeft: 8 }}>
+                  {period.dates}
+                </AppText>
+              </View>
+              <View style={[styles.periodBody, { borderLeftColor: colors.border }]}>{sites.map(renderCard)}</View>
+            </View>
           ))
         )}
       </ScrollView>
@@ -194,6 +236,10 @@ const styles = StyleSheet.create({
     minHeight: 46,
   },
   searchInput: { flex: 1, marginLeft: 8, fontSize: 15, paddingVertical: 10, outlineStyle: 'none' },
+  demo: { flexDirection: 'row', alignItems: 'flex-start', borderWidth: 1, borderRadius: RADIUS.md, padding: 12, marginTop: 14 },
+  periodHeader: { flexDirection: 'row', alignItems: 'center', marginTop: 8, marginBottom: 8 },
+  periodDot: { width: 12, height: 12, borderRadius: 6, marginRight: 10 },
+  periodBody: { borderLeftWidth: 2, marginLeft: 5, paddingLeft: 14 },
   featured: { borderRadius: RADIUS.lg, overflow: 'hidden' },
   featuredImage: { width: '100%', height: 150 },
   featuredBody: { padding: 16 },
