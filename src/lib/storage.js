@@ -18,6 +18,7 @@ export const KEYS = {
   notifications: (userId) => `kemet:notifications:${userId}`, // notification history
   activity: (userId) => `kemet:activity:${userId}`, // recent user actions
   weatherAlerts: (userId) => `kemet:weather-alerts:${userId}`, // heat alerts already sent today
+  trip: (userId) => `kemet:trip:${userId}`, // site ids chosen for the trip planner
   wikiCache: 'kemet:cache:wiki', // cached Wikipedia summaries (API responses)
   weatherCache: 'kemet:cache:weather', // last Open-Meteo response
 };
@@ -84,6 +85,22 @@ export async function toggleVisited(userId, siteId) {
   await setJSON(KEYS.visited(userId), next);
   await logActivity(userId, next.includes(siteId) ? 'visited-marked' : 'visited-unmarked', siteId);
   return next;
+}
+
+// ----------------------------------------------------------------------------- trip planner
+// The trip keeps the chosen site ids; the route order is worked out from them
+// each time (src/lib/trip.js), so adding a stop never needs manual reordering.
+export const getTrip = (userId) => getJSON(KEYS.trip(userId), []);
+
+export async function saveTrip(userId, siteIds) {
+  await setJSON(KEYS.trip(userId), siteIds);
+  await logActivity(userId, 'trip-updated', `${siteIds.length} stops`);
+  return siteIds;
+}
+
+export async function toggleTripStop(userId, siteId) {
+  const current = await getTrip(userId);
+  return saveTrip(userId, current.includes(siteId) ? current.filter((id) => id !== siteId) : [...current, siteId]);
 }
 
 // ----------------------------------------------------------------------------- user preferences

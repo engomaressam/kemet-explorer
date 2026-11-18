@@ -1,5 +1,5 @@
-// Bottom-tab layout for the signed-in part of the app: Home, Live (external API)
-// and Favourites. Every tab shares a header with the app logo on the left and the
+// Bottom-tab layout for the signed-in part of the app: Home, Trip (route planner),
+// Live (external API) and Favourites. Every tab shares a header with the app logo on the left and the
 // settings icon on the right. Signed-out users are sent to the login screen.
 
 import React from 'react';
@@ -41,6 +41,13 @@ export default function TabsLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, size, focused }) => <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="trip"
+        options={{
+          title: 'Trip',
+          tabBarIcon: ({ color, size, focused }) => <Ionicons name={focused ? 'map' : 'map-outline'} size={size} color={color} />,
         }}
       />
       <Tabs.Screen

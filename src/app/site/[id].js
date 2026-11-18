@@ -1,10 +1,12 @@
 // Detail screen for one ancient site. The site id comes from the route
 // (/site/<id>). It combines local data (era, summary, highlights) with live data
 // from two APIs (a Wikipedia summary and photo, Open-Meteo weather), and lets the
-// user save the site as a favourite, mark it as visited or share it.
+// user save the site as a favourite, mark it as visited, add it to the trip
+// planner, open directions in Google Maps or share a link to it.
 
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Linking, Pressable, ScrollView, Share, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Image, Linking, Platform, Pressable, ScrollView, Share, StyleSheet, View } from 'react-native';
+import Constants from 'expo-constants';
 import { Ionicons } from '@expo/vector-icons';
 import { Redirect, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useAuth } from '../../context/AuthContext';
@@ -12,7 +14,8 @@ import { useSettings } from '../../context/SettingsContext';
 import { AppText, Card, OutlineButton, SectionTitle } from '../../components/ui';
 import { getSite, relatedSites } from '../../data/sites';
 import { describeWeather, fetchWeatherForSites, fetchWikiSummary, formatTemperature, visitTip } from '../../lib/api';
-import { getFavorites, getVisited, logActivity, toggleFavorite, toggleVisited } from '../../lib/storage';
+import { getFavorites, getTrip, getVisited, logActivity, toggleFavorite, toggleTripStop, toggleVisited } from '../../lib/storage';
+import { googleMapsPlaceUrl } from '../../lib/trip';
 import { RADIUS } from '../../constants/theme';
 
 export default function SiteDetailScreen() {
@@ -27,6 +30,8 @@ export default function SiteDetailScreen() {
   const [weather, setWeather] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isVisited, setIsVisited] = useState(false);
+  const [inTrip, setInTrip] = useState(false);
+  const [shareNote, setShareNote] = useState(null);
 
   // Load the user's saved state and the live data for this site.
   useEffect(() => {
@@ -35,6 +40,8 @@ export default function SiteDetailScreen() {
     setWeather(null);
     getFavorites(user.id).then((f) => setIsFavorite(f.includes(site.id)));
     getVisited(user.id).then((v) => setIsVisited(v.includes(site.id)));
+    getTrip(user.id).then((t) => setInTrip(t.includes(site.id)));
+    setShareNote(null);
     logActivity(user.id, 'site-viewed', site.id);
     fetchWikiSummary(site.wiki)
       .then(setWiki)
@@ -55,11 +62,31 @@ export default function SiteDetailScreen() {
 
   const onFavorite = async () => setIsFavorite((await toggleFavorite(user.id, site.id)).includes(site.id));
   const onVisited = async () => setIsVisited((await toggleVisited(user.id, site.id)).includes(site.id));
+  const onTrip = async () => setInTrip((await toggleTripStop(user.id, site.id)).includes(site.id));
+
+  // On a phone this opens the system share sheet. In a browser it uses the Web
+  // Share API where there is one, and otherwise copies a link to this page.
   const onShare = async () => {
+    const text = `${site.name} (${site.city}): ${site.summary}`;
+    if (Platform.OS !== 'web') {
+      try {
+        await Share.share({ message: text, title: site.name });
+      } catch (e) {
+        // The user closed the share sheet; nothing else to do.
+      }
+      return;
+    }
+    const base = Constants.expoConfig?.experiments?.baseUrl || '';
+    const url = `${window.location.origin}${base}/site/${site.id}`;
     try {
-      await Share.share({ message: `${site.name} (${site.city}): ${site.summary}`, title: site.name });
+      if (navigator.share) {
+        await navigator.share({ title: site.name, text, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareNote('Link copied to the clipboard.');
+      }
     } catch (e) {
-      // Sharing is not available in every browser; nothing else to do.
+      if (e && e.name !== 'AbortError') setShareNote(`Copy this link: ${url}`);
     }
   };
 
@@ -71,8 +98,8 @@ export default function SiteDetailScreen() {
       <Stack.Screen options={{ title: site.name }} />
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         {/* Photo from the Wikipedia API */}
-        {settings.showPhotos && wiki && wiki.image ? (
-          <Image source={{ uri: wiki.image }} style={styles.hero} accessibilityLabel={`Photo of ${site.name}`} />
+        {settings.showPhotos && (site.photo || (wiki && wiki.image)) ? (
+          <Image source={{ uri: site.photo || wiki.image }} style={styles.hero} accessibilityLabel={`Photo of ${site.name}`} />
         ) : (
           <View style={[styles.hero, styles.heroPlaceholder, { backgroundColor: colors.accentSoft }]}>
             {wiki || wikiError ? (
@@ -89,8 +116,18 @@ export default function SiteDetailScreen() {
         </AppText>
         <View style={styles.row}>
           <Ionicons name="location-outline" size={15} color={colors.textMuted} />
-          <AppText muted style={{ marginLeft: 4 }}>
+          <AppText muted style={{ marginLeft: 4, flex: 1 }}>
             {site.city} · {site.region}
+          </AppText>
+          <AppText
+            size={14}
+            weight="700"
+            color={colors.primary}
+            onPress={() => Linking.openURL(googleMapsPlaceUrl(site))}
+            accessibilityRole="link"
+            testID="detail-directions"
+          >
+            Directions
           </AppText>
         </View>
         <View style={[styles.row, { flexWrap: 'wrap', gap: 8 }]}>
@@ -126,8 +163,22 @@ export default function SiteDetailScreen() {
             colors={colors}
             testID="detail-visited"
           />
-          <ActionButton icon="share-social-outline" label="Share" onPress={onShare} colors={colors} />
+          <ActionButton
+            icon={inTrip ? 'map' : 'map-outline'}
+            label={inTrip ? 'In your trip' : 'Add to trip'}
+            active={inTrip}
+            activeColor={colors.accent}
+            onPress={onTrip}
+            colors={colors}
+            testID="detail-trip"
+          />
+          <ActionButton icon="share-social-outline" label="Share" onPress={onShare} colors={colors} testID="detail-share" />
         </View>
+        {shareNote ? (
+          <AppText size={13} muted style={{ marginTop: 8, textAlign: 'center' }} selectable>
+            {shareNote}
+          </AppText>
+        ) : null}
 
         {/* Live weather from Open-Meteo */}
         <Card style={{ marginTop: 16 }}>
@@ -240,7 +291,7 @@ const styles = StyleSheet.create({
   heroPlaceholder: { alignItems: 'center', justifyContent: 'center' },
   row: { flexDirection: 'row', alignItems: 'center', marginTop: 8 },
   pill: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8 },
-  actions: { flexDirection: 'row', gap: 10, marginTop: 16 },
+  actions: { flexDirection: 'row', gap: 8, marginTop: 16 },
   actionButton: { flex: 1, borderWidth: 1.5, borderRadius: RADIUS.md, paddingVertical: 10, alignItems: 'center' },
   related: { width: 150, borderWidth: 1, borderRadius: RADIUS.md, padding: 12, marginRight: 10 },
 });
