@@ -1,8 +1,11 @@
-// Local catalogue of the ancient sites shown in the app.
+// Local catalogue of the ancient sites and museums shown in the app.
 // Facts are kept short and conservative; the detail screen adds a live summary
-// from Wikipedia (see src/lib/api.js). Coordinates feed the Open-Meteo weather API.
+// from Wikipedia (see src/lib/api.js). Coordinates (taken from each Wikipedia
+// article) feed the Open-Meteo weather API, the trip planner and the map links.
+// `photo` is optional: a Wikimedia Commons image (960 px wide) shown instead of the
+// article's lead image when that image is a logo rather than a photo.
 
-export const CATEGORIES = ['All', 'Pyramids', 'Temples', 'Tombs'];
+export const CATEGORIES = ['All', 'Pyramids', 'Temples', 'Tombs', 'Museums'];
 
 export const SITES = [
   {
@@ -164,7 +167,7 @@ export const SITES = [
     city: 'Aswan',
     region: 'Aswan & Nubia',
     category: 'Temples',
-    era: 'Ptolemaic period (c. 380 BC onward)',
+    era: '30th Dynasty to Roman period (c. 380 BC onward)',
     summary:
       'The island temple of the goddess Isis, relocated to Agilkia Island in the 1970s after the building of the Aswan dams. It is reached by boat.',
     highlights: [
@@ -233,7 +236,224 @@ export const SITES = [
     lat: 26.1419,
     lon: 32.6703,
   },
+  {
+    id: 'bent-pyramid',
+    year: -2610, // approximate start date, used to sort sites from oldest
+    name: 'Bent Pyramid',
+    city: 'Dahshur',
+    region: 'Cairo & Giza',
+    category: 'Pyramids',
+    era: 'Old Kingdom, 4th Dynasty (c. 2600 BC)',
+    summary:
+      'An early pyramid of King Sneferu whose slope changes partway up, from about 54 to about 43 degrees: a step on the way from the Step Pyramid to the true pyramid.',
+    highlights: [
+      'Much of its original smooth limestone casing survives',
+      'The change of angle is visible from far across the desert',
+      'A small satellite pyramid stands on its south side',
+    ],
+    wiki: 'Bent_Pyramid',
+    lat: 29.7903,
+    lon: 31.2092,
+  },
+  {
+    id: 'red-pyramid',
+    year: -2605, // approximate start date, used to sort sites from oldest
+    name: 'Red Pyramid',
+    city: 'Dahshur',
+    region: 'Cairo & Giza',
+    category: 'Pyramids',
+    era: 'Old Kingdom, 4th Dynasty (c. 2600 BC)',
+    summary:
+      'Built for King Sneferu, father of Khufu, it is the first successful smooth-sided pyramid in Egypt and takes its name from the reddish stone of its core.',
+    highlights: [
+      'About 105 m tall, the third-largest pyramid in Egypt',
+      'A long passage leads down to its corbelled chambers',
+      'Far quieter than Giza, with wide desert views',
+    ],
+    wiki: 'Red_Pyramid',
+    lat: 29.8083,
+    lon: 31.2058,
+  },
+  {
+    id: 'colossi-memnon',
+    year: -1350, // approximate start date, used to sort sites from oldest
+    name: 'Colossi of Memnon',
+    city: 'Luxor West Bank',
+    region: 'Luxor',
+    category: 'Temples',
+    era: 'New Kingdom, 18th Dynasty (c. 1350 BC)',
+    summary:
+      'Two giant seated statues of Amenhotep III that once guarded the entrance to his vast mortuary temple, most of which has since disappeared.',
+    highlights: [
+      'Each statue stands about 18 m tall',
+      'Greek and Roman visitors heard one of them "sing" at dawn after an earthquake in 27 BC',
+      'An easy first stop on the way to the West Bank sites',
+    ],
+    wiki: 'Colossi_of_Memnon',
+    lat: 25.7206,
+    lon: 32.6106,
+  },
+  {
+    id: 'abydos',
+    year: -1290, // approximate start date, used to sort sites from oldest
+    name: 'Temple of Seti I, Abydos',
+    city: 'Abydos, Sohag',
+    region: 'Upper Egypt',
+    category: 'Temples',
+    era: 'New Kingdom, 19th Dynasty (c. 1290 BC)',
+    summary:
+      'A temple begun by Seti I and finished by his son Ramesses II at Abydos, the cult centre of Osiris, admired for the finest painted reliefs of its age.',
+    highlights: [
+      'The Abydos King List, naming 76 earlier kings',
+      'The Osireion, an unusual sunken structure behind the temple',
+      'Delicate raised reliefs that keep much of their colour',
+    ],
+    wiki: 'Temple_of_Seti_I_(Abydos)',
+    lat: 26.185,
+    lon: 31.9189,
+  },
+  {
+    id: 'valley-queens',
+    year: -1290, // approximate start date, used to sort sites from oldest
+    name: 'Valley of the Queens',
+    city: 'Luxor West Bank',
+    region: 'Luxor',
+    category: 'Tombs',
+    era: 'New Kingdom (c. 1550-1070 BC)',
+    summary:
+      'The burial place of royal wives and children of the New Kingdom, best known for the tomb of Nefertari, the principal wife of Ramesses II.',
+    highlights: [
+      'Tomb of Nefertari (QV66), among the finest painted tombs in Egypt',
+      'Tombs of the young sons of Ramesses III',
+      'Dozens of tombs cut into the hills of the West Bank',
+    ],
+    wiki: 'Valley_of_the_Queens',
+    lat: 25.7275,
+    lon: 32.5931,
+  },
+  {
+    id: 'medinet-habu',
+    year: -1180, // approximate start date, used to sort sites from oldest
+    name: 'Medinet Habu',
+    city: 'Luxor West Bank',
+    region: 'Luxor',
+    category: 'Temples',
+    era: 'New Kingdom, 20th Dynasty (12th century BC)',
+    summary:
+      'The mortuary temple of Ramesses III, one of the best preserved temples in Egypt, with deeply carved reliefs and much of its original paint.',
+    highlights: [
+      "Reliefs of Ramesses III's battles against the Sea Peoples",
+      'A fortified gateway modelled on a Syrian migdol',
+      'Painted columns and ceilings in the second court',
+    ],
+    wiki: 'Medinet_Habu',
+    lat: 25.7197,
+    lon: 32.6008,
+  },
+  {
+    id: 'esna',
+    year: -180, // approximate start date, used to sort sites from oldest
+    name: 'Temple of Esna',
+    city: 'Esna',
+    region: 'Upper Egypt',
+    category: 'Temples',
+    era: 'Ptolemaic and Roman periods (c. 180 BC-AD 250)',
+    summary:
+      'The temple of the ram-headed creator god Khnum. Only its Roman-era hypostyle hall has been cleared, and it sits about 9 m below the streets of the modern town.',
+    highlights: [
+      'Recently cleaned ceilings that show their original bright colours',
+      '24 columns with richly carved capitals',
+      'Astronomical ceiling with signs of the zodiac',
+    ],
+    wiki: 'Temple_of_Esna',
+    lat: 25.2935,
+    lon: 32.5562,
+  },
+  {
+    id: 'kom-el-shoqafa',
+    year: 100, // approximate start date, used to sort sites from oldest
+    name: 'Catacombs of Kom El Shoqafa',
+    city: 'Alexandria',
+    region: 'Alexandria',
+    category: 'Tombs',
+    era: 'Roman period (2nd century AD)',
+    summary:
+      'A multi-level underground necropolis cut into the rock, where Egyptian, Greek and Roman styles meet in the same tomb.',
+    highlights: [
+      'A spiral staircase winds around the shaft used to lower the dead',
+      'The main tomb is guarded by figures of Anubis dressed as Roman soldiers',
+      'Rediscovered in 1900, reportedly when a donkey fell into the shaft',
+    ],
+    wiki: 'Catacombs_of_Kom_El_Shoqafa',
+    lat: 31.1786,
+    lon: 29.893,
+  },
+  {
+    id: 'egyptian-museum',
+    year: 1902, // opening year, used to sort sites from oldest
+    name: 'Egyptian Museum',
+    city: 'Tahrir Square, Cairo',
+    region: 'Cairo & Giza',
+    category: 'Museums',
+    era: 'Museum, opened 1902',
+    summary:
+      'The historic museum on Tahrir Square, holding one of the largest collections of ancient Egyptian antiquities in the world.',
+    highlights: [
+      'Masterpieces from the earliest dynasties onward, including the Narmer Palette',
+      'A neoclassical building that has housed the collection since 1902',
+      'Easy to combine with a walk through downtown Cairo',
+    ],
+    wiki: 'Egyptian_Museum',
+    photo:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg/960px-1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg',
+    lat: 30.0478,
+    lon: 31.2333,
+  },
+  {
+    id: 'nubian-museum',
+    year: 1997, // opening year, used to sort sites from oldest
+    name: 'Nubian Museum',
+    city: 'Aswan',
+    region: 'Aswan & Nubia',
+    category: 'Museums',
+    era: 'Museum, opened 1997',
+    summary:
+      'A museum of Nubian history and culture, built with UNESCO support after the campaign that rescued the monuments threatened by Lake Nasser.',
+    highlights: [
+      'Objects from prehistory to the present day',
+      'A model of a traditional Nubian village',
+      'Its building won the Aga Khan Award for Architecture in 2001',
+    ],
+    wiki: 'Nubian_Museum',
+    lat: 24.08,
+    lon: 32.8894,
+  },
+  {
+    id: 'grand-egyptian-museum',
+    year: 2025, // opening year, used to sort sites from oldest
+    name: 'Grand Egyptian Museum',
+    city: 'Giza',
+    region: 'Cairo & Giza',
+    category: 'Museums',
+    era: 'Museum, opened 2025',
+    summary:
+      "The largest archaeological museum devoted to a single civilisation, beside the Giza plateau, and home to the complete collection of Tutankhamun's treasures.",
+    highlights: [
+      'Colossal statue of Ramesses II in the grand atrium',
+      'The Grand Staircase lined with royal statues',
+      "Khufu's solar boat in its own gallery",
+    ],
+    wiki: 'Grand_Egyptian_Museum',
+    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Entrance_Grand_Egyptian_museum.jpg/960px-Entrance_Grand_Egyptian_museum.jpg',
+    lat: 29.995,
+    lon: 31.1193,
+  },
 ];
+
+// Smaller version of a site's own photo for list thumbnails.
+export function photoThumb(url) {
+  return url.replace('/960px-', '/330px-');
+}
 
 export function getSite(id) {
   return SITES.find((s) => s.id === id);
@@ -247,4 +467,28 @@ export function relatedSites(site, limit = 4) {
 export function siteOfTheDay(date = new Date()) {
   const dayIndex = Math.floor(date.getTime() / 86400000);
   return SITES[dayIndex % SITES.length];
+}
+
+// Historical periods for the timeline view, by the year a site was begun.
+// Dates follow the conventional chronology and are approximate.
+export const PERIODS = [
+  { id: 'old', name: 'Old Kingdom', dates: 'c. 2686-2181 BC', until: -2150 },
+  { id: 'middle', name: 'Middle Kingdom', dates: 'c. 2055-1650 BC', until: -1550 },
+  { id: 'new', name: 'New Kingdom', dates: 'c. 1550-1070 BC', until: -1070 },
+  { id: 'late', name: 'Late Period', dates: 'c. 1070-332 BC', until: -332 },
+  { id: 'ptolemaic', name: 'Ptolemaic period', dates: '332-30 BC', until: -30 },
+  { id: 'roman', name: 'Roman period', dates: '30 BC-AD 641', until: 641 },
+  { id: 'modern', name: 'Modern museums', dates: 'since 1902', until: Infinity },
+];
+
+export function periodOf(year) {
+  return PERIODS.find((p) => year < p.until);
+}
+
+// Groups sites into timeline sections, oldest first; empty periods are left out.
+export function groupByPeriod(sites) {
+  const sorted = [...sites].sort((a, b) => a.year - b.year);
+  return PERIODS.map((period) => ({ period, sites: sorted.filter((s) => periodOf(s.year).id === period.id) })).filter(
+    (g) => g.sites.length,
+  );
 }

@@ -9,7 +9,7 @@ import { useTheme } from '../context/SettingsContext';
 import { AppText } from './ui';
 import { RADIUS } from '../constants/theme';
 
-const CATEGORY_ICON = { Pyramids: 'triangle-outline', Temples: 'business-outline', Tombs: 'key-outline' };
+const CATEGORY_ICON = { Pyramids: 'triangle-outline', Temples: 'business-outline', Tombs: 'key-outline', Museums: 'library-outline' };
 
 export default function SiteCard({ site, photo, isFavorite, onToggleFavorite, visited, showPhoto = true }) {
   const router = useRouter();
