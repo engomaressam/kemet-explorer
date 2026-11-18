@@ -1,5 +1,5 @@
-// Live screen: external API integration. It fetches the current weather at all
-// twelve sites from the Open-Meteo API in a single GET request, shows it with a
+// Live screen: external API integration. It fetches the current weather at every
+// site from the Open-Meteo API in a single GET request, shows it with a
 // visiting tip for each site, and sends a heat alert for favourite sites when it
 // is very hot (if the user enabled those alerts in Settings > Notifications).
 
@@ -90,7 +90,9 @@ export default function LiveScreen() {
   const entries = SITES.map((s) => ({ site: s, w: data && data.bySite ? data.bySite[s.id] : null })).filter((e) => e.w);
   const hottest = entries.reduce((a, b) => (!a || b.w.temperature > a.w.temperature ? b : a), null);
   const coolest = entries.reduce((a, b) => (!a || b.w.temperature < a.w.temperature ? b : a), null);
-  const updated = data ? new Date(data.fetchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '--';
+  const updated = data
+    ? new Date(data.fetchedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Cairo' })
+    : '--';
 
   return (
     <ScrollView

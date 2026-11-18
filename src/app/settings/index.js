@@ -4,6 +4,7 @@
 // clears the saved session and returns to the login screen.
 
 import React, { useEffect, useState } from 'react';
+import Constants from 'expo-constants';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Redirect, useRouter } from 'expo-router';
 import { useAuth } from '../../context/AuthContext';
@@ -105,7 +106,7 @@ export default function SettingsMenuScreen() {
         <SettingRow
           icon="information-circle-outline"
           title="About Kemet Explorer"
-          description="Version 1.0.0, data sources and credits"
+          description={`Version ${Constants.expoConfig?.version ?? '1.1.0'}, data sources and credits`}
           onPress={() => router.push('/settings/about')}
           testID="menu-about"
         />

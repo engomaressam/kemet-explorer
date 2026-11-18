@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kemet Explorer",
     "slug": "kemet-explorer",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "scheme": "kemetexplorer",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -32,7 +32,8 @@
       "name": "Kemet Explorer",
       "shortName": "Kemet",
       "themeColor": "#1D4E89",
-      "backgroundColor": "#FBF6EC"
+      "backgroundColor": "#FBF6EC",
+      "description": "A guide to Egypt's ancient sites and museums: live weather, Wikipedia summaries, a trip planner along the Nile, favourites and reminders. Built with React Native and Expo."
     },
     "plugins": [
       "expo-router",
@@ -43,6 +44,9 @@
           "color": "#1D4E89"
         }
       ]
-    ]
+    ],
+    "experiments": {
+      "baseUrl": "/kemet-explorer"
+    }
   }
 }

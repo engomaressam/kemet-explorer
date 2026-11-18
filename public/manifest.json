@@ -1,0 +1,15 @@
+{
+  "name": "Kemet Explorer",
+  "short_name": "Kemet",
+  "description": "A guide to Egypt's ancient sites and museums, with live weather, Wikipedia summaries and a trip planner along the Nile.",
+  "start_url": "/kemet-explorer/",
+  "scope": "/kemet-explorer/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF6EC",
+  "theme_color": "#1D4E89",
+  "icons": [
+    { "src": "/kemet-explorer/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/kemet-explorer/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
